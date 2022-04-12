@@ -1,9 +1,7 @@
-require 'minitest/autorun'
 require 'rspec'
 require_relative 'weather_dto'
 
-
-describe 'WeaTest' do
+describe 'Weather_dto_test' do
   before do
     WEATHERDTO = WeatherDTO.new
   end
@@ -12,8 +10,8 @@ describe 'WeaTest' do
     # Do nothing
   end
 
-  context 'when condition' do
-    it 'succeeds' do
+  context 'Check feels like temperature field' do
+    it 'Check if feels like temperature is valid' do
       raise unless WEATHERDTO.checkFeelsLikeTempValid
     end
   end
