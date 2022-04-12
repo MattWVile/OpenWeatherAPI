@@ -3,7 +3,7 @@ require_relative 'json_injector'
 class WeatherDTO
 
   HASHMAP = JsonInjector.new.getHashMapResponse
-  puts HASHMAP
+
   def getLongitude
     HASHMAP["lon"]
   end

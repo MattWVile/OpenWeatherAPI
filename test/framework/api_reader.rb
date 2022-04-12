@@ -7,4 +7,5 @@ class ApiReader
     uri = URI("http://api.openweathermap.org/data/2.5/weather?q=" + query + "&APPID=" + key)
     return Net::HTTP.get(uri)
   end
+
 end
