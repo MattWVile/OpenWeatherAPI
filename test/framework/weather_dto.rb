@@ -3,117 +3,170 @@ require_relative 'json_injector'
 class WeatherDTO
 
   HASHMAP = JsonInjector.new.getHashMapResponse
+  puts HASHMAP
 
   def getLongitude
-    return HASHMAP["lon"]
+    HASHMAP["lon"]
   end
 
   def getLatitude
-    return HASHMAP["lat"]
+    HASHMAP["lat"]
   end
 
   def getId
-    return HASHMAP["id"]
+    HASHMAP["id"]
   end
 
   def getMain
-    return HASHMAP["main"]
+    HASHMAP["main"]
   end
 
   def getDescription
-    return HASHMAP["description"]
+    HASHMAP["description"]
   end
 
   def getIcon
-    return HASHMAP["icon"]
+    HASHMAP["icon"]
   end
 
   def getBase
-    return HASHMAP["base"]
+    HASHMAP["base"]
   end
 
   def getTemperature
-    return HASHMAP["temp"]
+    HASHMAP["temp"]
   end
 
   def getFeelsLike
-    return HASHMAP["feels_like"]
+    HASHMAP["feels_like"]
   end
-
 
   def getMinTemperature
-    return HASHMAP["temp_min"]
+    HASHMAP["temp_min"]
   end
 
-
-  def getMaxTemperatire
-    return HASHMAP["temp_max"]
+  def getMaxTemperature
+    HASHMAP["temp_max"]
   end
-
 
   def getPressure
-    return HASHMAP["pressure"]
+    HASHMAP["pressure"]
   end
-
 
   def getHumidity
-    return HASHMAP["humidity"]
+    HASHMAP["humidity"]
   end
-
 
   def getVisibility
-    return HASHMAP["visibility"]
+    HASHMAP["visibility"]
   end
 
-
-  def getDegrees
-    return HASHMAP["deg"]
+  def getWindSpeed
+    HASHMAP["speed"]
   end
 
-
-  def getAll
-    return HASHMAP["all"]
+  def getWindDegrees
+    HASHMAP["deg"]
   end
 
+  def getCloudsAll
+    HASHMAP["all"]
+  end
 
   def getDt
-    return HASHMAP["dt"]
+    HASHMAP["dt"]
   end
-
-
-  def getType
-    return HASHMAP["type"]
-  end
-
 
   def getCountry
-    return HASHMAP["country"]
+    HASHMAP["country"]
   end
-
 
   def getSunrise
-    return HASHMAP["sunrise"]
+    HASHMAP["sunrise"]
   end
-
 
   def getSunset
-    return HASHMAP["sunset"]
+    HASHMAP["sunset"]
   end
-
 
   def getTimezone
-    return HASHMAP["timezone"]
+    HASHMAP["timezone"]
   end
-
 
   def getName
-    return HASHMAP["name"]
+    HASHMAP["name"]
   end
-
 
   def getCod
-    return HASHMAP["cod"]
+    HASHMAP["cod"]
   end
 
+  def isTempMinLessThanTempMax
+    getMinTemperature < getMaxTemperature ? true : false
+  end
 
+  def isTempMinAValidKelvinValue
+    getMinTemperature > 182 && getMinTemperature < 330 ? true : false
+  end
+
+  def isTempMaxAValidKelvinValue
+    getMaxTemperature > 182 && getMaxTemperature < 330 ? true : false
+  end
+
+  def isPressureAValidValue
+    getPressure >= 870 && getPressure <= 1085 ? true : false
+  end
+
+  def isHumidityAValidValue
+    getHumidity >= 0 && getHumidity <= 100 ? true : false
+  end
+
+  def isVisibilityAValidValue
+    getVisibility >= 0 && getVisibility <= 10000 ? true : false
+  end
+
+  def isWindSpeedAValidValue
+    getWindSpeed >= 0 && getWindSpeed <= 113 ? true : false
+  end
+
+  def isWindDegreesAValidValue
+    getWindSpeed >= 0 && getWindSpeed <= 360 ? true : false
+  end
+
+  def isCloudAllAValidValue
+    getWindSpeed >= 0 && getWindSpeed <= 100 ? true : false
+  end
+
+  def isDTAValidValueForOurCentury
+    getDt.to_s.length == 10 ? true : false
+  end
+
+  def isCountryAValidValue
+    getCountry == 2 ? true : false
+  end
+
+  def isSunriseValidValueForOurCentury
+    getSunrise.to_s.length == 10 ? true : false
+  end
+
+  def isSunsetValidValueForOurCentury
+    getSunset.to_s.length == 10 ? true : false
+  end
+
+  def isTimeBetweenSunriseAndSunsetValid
+    getSunset - getSunrise <= 69660 && getSunset - getSunrise >= 8040 ? true : false
+  end
+
+  def isTimeZoneAValidValue
+    getTimezone >= -43200 && getTimezone <= 50400 ? true : false
+  end
+
+  def isNameSameAsInputtedName
+    File.open("config").read.split(" ")[-1].downcase == getName.downcase ? true : false
+  end
+
+  def isCod200
+    getCod == 200 ? true : false
+  end
+ 
 end
