@@ -7,7 +7,6 @@ class JsonInjector
     idCount = 0
     hashMap = Hash.new
     json = ApiReader.new.getJsonResponse
-    puts json
     parsedJson = JSON.parse(json)
     parsedJson.each do |key, value|
       if value.class == Array

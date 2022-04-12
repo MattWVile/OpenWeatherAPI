@@ -18,7 +18,7 @@ GEM
     rspec-support (3.11.0)
 
 PLATFORMS
-  x64-mingw-ucrt
+  x64-unknown
   x86_64-darwin-19
 
 DEPENDENCIES
@@ -26,4 +26,4 @@ DEPENDENCIES
   rspec
 
 BUNDLED WITH
-   2.3.7
+   2.3.11
