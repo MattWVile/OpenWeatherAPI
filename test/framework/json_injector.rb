@@ -14,7 +14,6 @@ class JsonInjector
       if value.class == Hash
         value.each do |key1, value1|
           hashMap[key1] = value1
-
         end
       else
         hashMap[key] = value

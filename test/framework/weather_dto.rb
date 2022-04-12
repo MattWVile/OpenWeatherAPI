@@ -100,8 +100,16 @@ class WeatherDTO
     HASHMAP["cod"]
   end
 
+  def isTempMinLessThanTempMax
+    getMinTemperature < getMaxTemperature ? true : false
+  end
+
+  def isTempMinAValidKelvinValue
+    getMinTemperature > 182 && getMinTemperature < 330 ? true : false
+  end
+
   def isTempMaxAValidKelvinValue
-    getMaxTemperature >182 && getMaxTemperature < 330 ? true : false
+    getMaxTemperature > 182 && getMaxTemperature < 330 ? true : false
   end
 
   def isPressureAValidValue
@@ -146,6 +154,18 @@ class WeatherDTO
 
   def isTimeBetweenSunriseAndSunsetValid
     getSunset - getSunrise <= 69660 && getSunset - getSunrise >= 8040 ? true : false
+  end
+
+  def isTimeZoneAValidValue
+    getTimezone >= -43200 && getTimezone <= 50400 ? true : false
+  end
+
+  def isNameSameAsInputtedName
+    File.open("config").read.split(" ")[-1].downcase == getName.downcase ? true : false
+  end
+
+  def isCod200
+    getCod == 200 ? true : false
   end
   
 end
