@@ -88,5 +88,21 @@ describe 'WeatherTest' do
     end
   end
 
+  context 'Check weather id field of output' do
+    it 'check if weather id is integer' do
+      raise unless WEATHERDTO.checkWeatherIdType
+    end
+
+    it 'check if weather id is valid' do
+      raise unless WEATHERDTO.checkWeatherIdValid
+    end
+  end
+
+  context 'Check system id field of output' do
+    it 'check if system id is integer' do
+      raise unless WEATHERDTO.checkSystemIdType
+    end
+  end
+
 
 end

@@ -76,7 +76,7 @@ class WeatherDTO
     HASHMAP["dt"]
   end
 
-  def geSystemId
+  def getSystemId
     HASHMAP["system_id"]
   end
 
@@ -365,5 +365,105 @@ class WeatherDTO
   def checkFeelsLikeTempValid
     getFeelsLike > 182 && getFeelsLike < 330 ? true : false
   end
+
+  def checkWeatherIdType
+    getWeatherId.class.eql?(Integer) ? true : false
+  end
+
+  def checkWeatherIdValid
+    if getMain.eql?("Thunderstorm")
+      description = ["thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain", "light thunderstorm", "thunderstorm", "heavy thunderstorm", "ragged thunderstorm", "thunderstorm with light drizzle", "thunderstorm with drizzle", "thunderstorm with heavy drizzle"]
+      weather_id = [200, 201, 202, 210, 211, 212, 221, 230, 231, 232]
+    elsif getMain.eql?("Drizzle")
+      description = ["light intensity drizzle", "drizzle", "heavy intensity drizzle", "light intensity drizzle rain", "drizzle rain", "heavy intensity drizzle rain", "shower rain and drizzle", "heavy shower rain and drizzle", "shower drizzle"]
+      weather_id = [300, 301, 302, 310, 311, 312, 313, 314, 321]
+    elsif getMain.eql?("Rain")
+      description = ["light rain", "moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain", "freezing rain", "light intensity shower rain", "shower rain", "heavy intensity shower rain", "ragged shower rain"]
+      weather_id = [500, 501, 502, 503, 504, 511, 520, 521, 522, 530]
+    elsif getMain.eql?("Snow")
+      description = ["light snow", "Snow", "Heavy snow", "Sleet", "Light shower sleet", "Shower sleet", "Light rain and snow", "Rain and snow", "Light shower snow", "Shower snow", "Heavy shower snow"]
+      weather_id = [600, 601, 602, 611, 612, 613, 615, 616, 620, 621, 622]
+    elsif getMain.eql?("Mist")
+      if getWeatherId == 701
+        return true
+      else
+        return false
+      end
+    elsif getMain.eql?("Smoke")
+      if getWeatherId == 711
+        return true
+      else
+        return false
+      end
+
+    elsif getMain.eql?("Haze")
+      if getWeatherId == 721
+        return true
+      else
+        return false
+      end
+
+    elsif getMain.eql?("Dust")
+      if getDescription.eql?("sand/ dust whirls") && getWeatherId == 731
+        return true
+      elsif getDescription.eql?("dust") && getWeatherId == 761
+        return true
+      else
+        return false
+      end
+
+    elsif getMain.eql?("Fog")
+      if getWeatherId == 741
+        return true
+      else
+        return false
+      end
+
+    elsif getMain.eql?("Sand")
+      if getWeatherId == 751
+        return true
+      else
+        return false
+      end
+
+    elsif getMain.eql?("Ash")
+      if getWeatherId == 762
+        return true
+      else
+        return false
+      end
+    elsif getMain.eql?("Squall")
+      if getWeatherId == 771
+        return true
+      else
+        return false
+      end
+    elsif getMain.eql?("Tornado")
+      if getWeatherId == 781
+        return true
+      else
+        return false
+      end
+    elsif getMain.eql?("Clear")
+      if getWeatherId == 800
+        return true
+      else
+        return false
+      end
+    elsif getMain.eql?("Clouds")
+      description = ["few clouds", "scattered clouds", "broken clouds", "overcast clouds"]
+      weather_id = [801, 802, 803, 804]
+    end
+    if getWeatherId == weather_id[description.find_index(getDescription)]
+      return true
+    else
+      return false
+    end
+  end
+
+  def checkSystemIdType
+    getSystemId.class.eql?(Integer) ? true : false
+  end
+
 
 end
