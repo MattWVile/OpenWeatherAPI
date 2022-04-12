@@ -1,7 +1,8 @@
 require_relative 'json_injector'
 
 class WeatherDTO
-  HASHMAP = JsonInjector.new.getKeyPairs
+
+  HASHMAP = JsonInjector.new.getHashMapResponse
 
   def getLongitude
     return HASHMAP["lon"]
@@ -113,5 +114,6 @@ class WeatherDTO
   def getCod
     return HASHMAP["cod"]
   end
+
 
 end
