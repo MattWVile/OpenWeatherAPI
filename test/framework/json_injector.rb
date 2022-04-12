@@ -2,6 +2,8 @@ require 'json'
 require_relative 'api_reader.rb'
 
 class JsonInjector
+
+  def getKeyPairs
   hashMap = Hash.new
   json = ApiReader.new.getJsonResponse
   parsedJson = JSON.parse(json)
@@ -17,5 +19,6 @@ class JsonInjector
       hashMap[key] = value
     end
   end
-  puts hashMap
+  return hashMap
+  end
 end
