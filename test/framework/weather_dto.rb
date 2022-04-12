@@ -4,7 +4,6 @@ class WeatherDTO
 
   HASHMAP = JsonInjector.new.getHashMapResponse
   puts HASHMAP
-
   def getLongitude
     HASHMAP["lon"]
   end
@@ -12,7 +11,7 @@ class WeatherDTO
   def getLatitude
     HASHMAP["lat"]
   end
-
+  
   def getWeatherId
     HASHMAP["weather_id"]
   end
@@ -97,7 +96,7 @@ class WeatherDTO
     HASHMAP["timezone"]
   end
 
-  def getId
+  def getCityId
     HASHMAP["id"]
   end
 
@@ -150,7 +149,7 @@ class WeatherDTO
   end
 
   def isCountryAValidValue
-    getCountry == 2 ? true : false
+    getCountry.length == 2 ? true : false
   end
 
   def isSunriseValidValueForOurCentury
@@ -178,7 +177,7 @@ class WeatherDTO
   end
 
   def checkLongtitudeType
-    if getLongitude.class.eql? Integer
+    if getLongitude.class == Float
       return true
     else
       return false
@@ -195,7 +194,7 @@ class WeatherDTO
 
   def checkLatitudeType
 
-    if getLatitude.class.eql? Integer
+    if getLatitude.class.eql? Float
       return true
     else
       return false
