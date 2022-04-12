@@ -352,35 +352,19 @@ class WeatherDTO
   end
 
   def checkTempType
-    if getTemperature.class.eql?(Float) || getTemperature.class.eql?(Integer)
-      return true
-    else
-      return false
-    end
+    getTemperature.class.eql?(Float) || getTemperature.class.eql?(Integer) ? true :false
   end
 
   def checkTempValid
-    if getTemperature > 182 && getTemperature < 330
-      return true
-    else
-      return false
-    end
+    getTemperature > 182 && getTemperature < 330 ? true : false
   end
 
   def checkFeelsLikeTempType
-    if getFeelsLike.class.eql?(Float) || getFeelsLike.class.eql?(Integer)
-      return true
-    else
-      return false
-    end
+    getFeelsLike.class.eql?(Float) || getFeelsLike.class.eql?(Integer) ? true : false
   end
 
   def checkFeelsLikeTempValid
-    if getFeelsLike > 182 && getFeelsLike < 330
-      return true
-    else
-      return false
-    end
+    getFeelsLike > 182 && getFeelsLike < 330 ? true : false
   end
 
 end
