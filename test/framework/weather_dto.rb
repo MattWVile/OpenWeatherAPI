@@ -1,6 +1,7 @@
 require_relative 'json_injector'
 
 class WeatherDTO
+
   HASHMAP = JsonInjector.new.getHashMapResponse
   puts HASHMAP
 
@@ -167,5 +168,5 @@ class WeatherDTO
   def isCod200
     getCod == 200 ? true : false
   end
-  
+ 
 end
