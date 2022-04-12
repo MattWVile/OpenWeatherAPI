@@ -178,7 +178,7 @@ class WeatherDTO
   end
 
   def checkLongtitudeType
-    if getLongitude.class.eql? Integer
+    if getLongitude.class == Float
       return true
     else
       return false
@@ -195,7 +195,7 @@ class WeatherDTO
 
   def checkLatitudeType
 
-    if getLatitude.class.eql? Integer
+    if getLatitude.class.eql? Float
       return true
     else
       return false
