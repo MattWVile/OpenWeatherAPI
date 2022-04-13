@@ -76,6 +76,10 @@ class WeatherDTO
     HASHMAP["dt"]
   end
 
+  def getType
+    HASHMAP["type"]
+  end
+
   def getSystemId
     HASHMAP["system_id"]
   end
