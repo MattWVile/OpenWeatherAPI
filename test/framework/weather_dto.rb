@@ -465,5 +465,16 @@ class WeatherDTO
     getSystemId.class.eql?(Integer) ? true : false
   end
 
+  def isMaxTempAnIntOrFloat
+    getMaxTemperature.kind_of?(Float) || getMaxTemperature.kind_of?(Integer) ? true : false
+  end
+
+  def isMinTempAnIntOrFloat
+    getMinTemperature.kind_of?(Float) || getMinTemperature.kind_of?(Integer) ? true : false
+  end
+
+  def isWindSpeedIntOrFloat
+    getWindSpeed.kind_of?(Float) || getWindSpeed.kind_of?(Integer) ? true : false
+  end
 
 end

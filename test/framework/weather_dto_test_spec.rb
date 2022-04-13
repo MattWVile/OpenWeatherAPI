@@ -74,12 +74,13 @@ describe 'Weather_dto_test' do
   end
 
   context 'Validate returned data types for fields' do
-    it 'Check if min temperature is a float' do
-      raise unless WEATHERDTO.getMinTemperature.kind_of? Float
+
+    it 'Check if min temperature is a float or int' do
+      raise unless WEATHERDTO.isMinTempAnIntOrFloat
     end
 
-    it 'Check if max temperature is a float ' do
-      raise unless WEATHERDTO.getMaxTemperature.kind_of? Float
+    it 'Check if max temperature is a float or int' do
+      raise unless WEATHERDTO.isMaxTempAnIntOrFloat
     end
 
     it 'Check if pressure ia an int' do
@@ -94,8 +95,8 @@ describe 'Weather_dto_test' do
       raise unless WEATHERDTO.getHumidity.kind_of? Integer
     end
 
-    it 'Check if wind speed is an int' do
-      raise unless WEATHERDTO.getWindSpeed.kind_of? Float
+    it 'Check if wind speed is an int or a float' do
+      raise unless WEATHERDTO.isWindSpeedIntOrFloat
     end
 
     it 'Check if wind degrees is an int' do
@@ -130,4 +131,100 @@ describe 'Weather_dto_test' do
       raise unless WEATHERDTO.getCod.kind_of? Integer
     end
   end
+
+  context 'Check longitude field of output' do
+    it 'check if longtitude is float' do
+      raise unless WEATHERDTO.checkLongtitudeType
+    end
+
+    it 'check if longtitude is valid' do
+      raise unless WEATHERDTO.checkLimitsOfLongtitude
+    end
+  end
+
+  context 'Check longitude field of output' do
+    it 'check if latitude is float' do
+      raise unless WEATHERDTO.checkLatitudeType
+    end
+
+    it 'check if latitude is valid' do
+      raise unless WEATHERDTO.checkLimitsOfLatitude
+    end
+  end
+
+  context 'Check city id field of output' do
+    it 'check if city id is integer' do
+      raise unless WEATHERDTO.checkLatitudeType
+    end
+
+  end
+
+
+  context 'Check main field of output' do
+    it 'check if main is string' do
+      raise unless WEATHERDTO.checkMainType
+    end
+
+    it 'check if main is valid' do
+      raise unless WEATHERDTO.checkIfMainIsValid
+    end
+  end
+
+  context 'Check description field of output' do
+    it 'check if description is string' do
+      raise unless WEATHERDTO.checkDescriptionType
+    end
+
+    it 'check if description is valid' do
+      raise unless WEATHERDTO.checkIfDescriptionValid
+    end
+  end
+
+  context 'Check icon field of output' do
+    it 'check if icon is string' do
+      raise unless WEATHERDTO.checkIconType
+    end
+
+    it 'check if icon is valid' do
+      raise unless WEATHERDTO.checkIfIconValid
+    end
+  end
+
+  context 'Check temperature field of output' do
+    it 'check if temperature is string' do
+      raise unless WEATHERDTO.checkTempType
+    end
+
+    it 'check if temperature is valid' do
+      raise unless WEATHERDTO.checkTempValid
+    end
+  end
+
+  context 'Check feels like temperature field of output' do
+    it 'check if icon is string' do
+      raise unless WEATHERDTO.checkFeelsLikeTempType
+    end
+
+    it 'check if feels like temperature is valid' do
+      raise unless WEATHERDTO.checkFeelsLikeTempValid
+    end
+  end
+
+  context 'Check weather id field of output' do
+    it 'check if weather id is integer' do
+      raise unless WEATHERDTO.checkWeatherIdType
+    end
+
+    it 'check if weather id is valid' do
+      raise unless WEATHERDTO.checkWeatherIdValid
+    end
+  end
+
+  context 'Check system id field of output' do
+    it 'check if system id is integer' do
+      raise unless WEATHERDTO.checkSystemIdType
+    end
+  end
+
+
 end
