@@ -114,3 +114,103 @@ end
 Then(/^cod returns an int value$/) do
   @weather_dto.getCod.kind_of? Integer
 end
+
+Then(/^Longitude is a number between '-180' and '180'$/) do
+  @weather_dto.checkLimitsOfLongtitude
+end
+
+Then(/^Latitude is a number between '-90' and '90'$/) do
+  @weather_dto.checkLimitsOfLatitude
+end
+
+Then(/^pressure is an int between '870' and '1085'$/) do
+  @weather_dto.isPressureAValidValue
+end
+
+Then(/^humidity is an int between '0' and '100'$/) do
+  @weather_dto.isHumidityAValidValue
+end
+
+Then(/^visibility is an int between '0' and '10000'$/) do
+  @weather_dto.isVisibilityAValidValue
+end
+
+Then(/^wind speed is an int between '0' and '113'$/) do
+  @weather_dto.isWindSpeedAValidValue
+end
+
+Then(/^wind degrees is an int between '0' and '360'$/) do
+  @weather_dto.isWindDegreesAValidValue
+end
+
+Then(/^cloud all is an int between '0' and '100'$/) do
+  @weather_dto.isCloudAllAValidValue
+end
+
+Then(/^DTA is an int of '10' digits$/) do
+  @weather_dto.isDTAValidValueForOurCentury
+end
+
+Then(/^sunrise is an int of '10' digits$/) do
+  @weather_dto.isSunriseValidValueForOurCentury
+end
+
+Then(/^sunset is an int of '10' digits$/) do
+  @weather_dto.isSunsetValidValueForOurCentury
+end
+
+Then(/^country is an string of '2' chars$/) do
+  @weather_dto.isCountryAValidValue
+end
+
+Then(/^cod is an int of '200' when the call is a success$/) do
+  @weather_dto.isCod200
+end
+
+Then(/^weather id is a number correlating to the description$/) do
+  @weather_dto.checkWeatherIdValid
+end
+
+Then(/^main is a string generally describing the weather$/) do
+  @weather_dto.checkIfMainIsValid
+end
+
+Then(/^description is a string more specifically describing the weather than main$/) do
+  @weather_dto.checkIfDescriptionValid
+end
+
+Then(/^icon is a string correlating to an icon$/) do
+  @weather_dto.checkIfIconValid
+end
+
+Then(/^temp is an int between the highest and lowest recorded temperatures$/) do
+  @weather_dto.checkTempValid
+end
+
+Then(/^max temp is an int between the highest and lowest recorded temperatures$/) do
+  @weather_dto.isTempMaxAValidKelvinValue
+end
+
+Then(/^min temp is an int between the highest and lowest recorded temperatures$/) do
+  @weather_dto.isTempMinAValidKelvinValue
+end
+
+Then(/^feels like is an int between the highest and lowest recorded temperatures$/) do
+  @weather_dto.checkFeelsLikeTempValid
+end
+
+Then(/^min temp is an int lower than max temp$/) do
+  @weather_dto.isTempMinLessThanTempMax
+end
+
+Then(/^timezone is an int between the highest and lowest timezone values$/) do
+  @weather_dto.isTimeZoneAValidValue
+end
+
+Then(/^city name is the same string as the one inputted in the config file$/) do
+  @weather_dto.isNameSameAsInputtedName
+end
+
+Then(/^time between sunrise and sunset is an int between the longest and shortest days of the year worldwide$/) do
+  @weather_dto.isTimeBetweenSunriseAndSunsetValide
+end
