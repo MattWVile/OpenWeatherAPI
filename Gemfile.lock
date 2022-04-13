@@ -25,6 +25,7 @@ PLATFORMS
 DEPENDENCIES
   minitest
   rspec
+  rspec-mocks
 
 BUNDLED WITH
    2.3.11
