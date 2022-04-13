@@ -29,4 +29,5 @@ class JsonInjector
     end
     return hashMap
   end
+
 end
