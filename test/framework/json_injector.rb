@@ -2,7 +2,6 @@ require 'json'
 require_relative 'api_reader.rb'
 
 class JsonInjector
-
   def getHashMapResponse
     idCount = 0
     hashMap = Hash.new
@@ -29,4 +28,5 @@ class JsonInjector
     end
     return hashMap
   end
+  puts JsonInjector.new.getHashMapResponse
 end
