@@ -1,5 +1,6 @@
 require 'rspec'
 require_relative 'weather_dto'
+require 'simplecov'
 
 describe 'Weather_dto_test' do
   before :all do
