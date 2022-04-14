@@ -7,4 +7,4 @@ gem "minitest"
 gem "rspec"
 gem 'cucumber'
 gem "rspec-mocks"
-
+gem "simplecov"
