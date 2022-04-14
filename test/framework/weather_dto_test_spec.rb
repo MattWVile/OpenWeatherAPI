@@ -3,7 +3,7 @@ require_relative 'weather_dto'
 
 describe 'Weather_dto_test' do
   before :all do
-    WEATHERDTO = WeatherDTO.new
+    WEATHERDTO = WeatherDTO.new(JsonInjector.new.getHashMapResponse)
   end
 
   context 'Validate returned data for fields' do

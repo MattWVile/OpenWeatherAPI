@@ -1,79 +1,86 @@
 require_relative 'json_injector'
 
 class WeatherDTO
+  hashmap = JsonInjector.new.getHashMapResponse
 
-  HASHMAP = JsonInjector.new.getHashMapResponse
+    def initialize(hashmap)
+      @Hashmap = hashmap
+    end
 
-  def getLongitude
-    HASHMAP["lon"]
-  end
+    def getLongitude
+      @Hashmap["lon"]
+    end
 
   def getLatitude
-    HASHMAP["lat"]
+    @Hashmap["lat"]
   end
-  
+
   def getWeatherId
-    HASHMAP["weather_id"]
+    @Hashmap["weather_id"]
   end
 
   def getMain
-    HASHMAP["main"]
+    @Hashmap["main"]
   end
 
   def getDescription
-    HASHMAP["description"]
+    @Hashmap["description"]
   end
 
   def getIcon
-    HASHMAP["icon"]
+    @Hashmap["icon"]
   end
 
   def getBase
-    HASHMAP["base"]
+    @Hashmap["base"]
   end
 
   def getTemperature
-    HASHMAP["temp"]
+    @Hashmap["temp"]
   end
 
   def getFeelsLike
-    HASHMAP["feels_like"]
+    @Hashmap["feels_like"]
   end
 
   def getMinTemperature
-    HASHMAP["temp_min"]
+    @Hashmap["temp_min"]
   end
 
   def getMaxTemperature
-    HASHMAP["temp_max"]
+    @Hashmap["temp_max"]
   end
 
   def getPressure
-    HASHMAP["pressure"]
+    @Hashmap["pressure"]
   end
 
   def getHumidity
-    HASHMAP["humidity"]
+    @Hashmap["humidity"]
   end
 
   def getVisibility
-    HASHMAP["visibility"]
+    @Hashmap["visibility"]
   end
 
   def getWindSpeed
-    HASHMAP["speed"]
+    @Hashmap["speed"]
   end
 
   def getWindDegrees
-    HASHMAP["deg"]
+    @Hashmap["deg"]
   end
 
   def getCloudsAll
-    HASHMAP["all"]
+    @Hashmap["all"]
   end
 
   def getDt
-    HASHMAP["dt"]
+    @Hashmap["dt"]
+  end
+
+  def getType
+    @Hashmap["type"]
   end
 
   def getType
@@ -81,36 +88,142 @@ class WeatherDTO
   end
 
   def getSystemId
-    HASHMAP["system_id"]
+    @Hashmap["system_id"]
   end
 
   def getCountry
-    HASHMAP["country"]
+    @Hashmap["country"]
   end
 
   def getSunrise
-    HASHMAP["sunrise"]
+    @Hashmap["sunrise"]
   end
 
   def getSunset
-    HASHMAP["sunset"]
+    @Hashmap["sunset"]
   end
 
   def getTimezone
-    HASHMAP["timezone"]
+    @Hashmap["timezone"]
   end
 
   def getCityId
-    HASHMAP["id"]
+    @Hashmap["id"]
   end
 
   def getName
-    HASHMAP["name"]
+    @Hashmap["name"]
   end
 
   def getCod
-    HASHMAP["cod"]
+    @Hashmap["cod"]
   end
+
+
+  def setLongitude(longitude)
+    @Hashmap["lon"] = longitude
+  end
+
+  def setLatitude(latitude)
+    @Hashmap["lat"] = latitude
+  end
+
+  def setWeatherId(id)
+    @Hashmap["weather_id"] = id
+  end
+
+  def setMain(mn)
+    @Hashmap["main"] = mn
+  end
+
+  def setDescription(des)
+    @Hashmap["description"] = des
+  end
+
+  def setIcon(ic)
+    @Hashmap["icon"] = ic
+  end
+
+  def setBase(bs)
+    @Hashmap["base"] = bs
+  end
+
+  def setTemperature(temp)
+    @Hashmap["temp"] = temp
+  end
+
+  def setFeelsLike(feelslike)
+    @Hashmap["feels_like"] = feelslike
+  end
+
+  def setMinTemperature(mintemp)
+    @Hashmap["temp_min"] = mintemp
+  end
+
+  def setMaxTemperature(maxtemp)
+    @Hashmap["temp_max"] = maxtemp
+  end
+
+  def setPressure(pr)
+    @Hashmap["pressure"] = pr
+  end
+
+  def setHumidity(hm)
+    @Hashmap["humidity"] = hm
+  end
+
+  def setVisibility(vs)
+    @Hashmap["visibility"] = vs
+  end
+
+  def setWindSpeed(ws)
+    @Hashmap["speed"] = ws
+  end
+
+  def setWindDegrees(wd)
+    @Hashmap["deg"] = wd
+  end
+
+  def setCloudsAll(ca)
+    @Hashmap["all"] = ca
+  end
+
+  def setDt(dt)
+    @Hashmap["dt"] = dt
+  end
+
+  def setSystemId(id)
+    @Hashmap["system_id"] = id
+  end
+
+  def setCountry(country)
+    @Hashmap["country"] = country
+  end
+
+  def setSunrise(sr)
+    @Hashmap["sunrise"] = sr
+  end
+
+  def setSunset(ss)
+    @Hashmap["sunset"] = ss
+  end
+
+  def setTimezone(tz)
+    @Hashmap["timezone"] = tz
+  end
+
+  def setCityId(id)
+    @Hashmap["id"] = id
+  end
+
+  def setName(name)
+    @Hashmap["name"] = name
+  end
+
+  def setCod(cod)
+    @Hashmap["cod"] = cod
+  end
+
 
   def isTempMinLessThanTempMax
     getMinTemperature < getMaxTemperature ? true : false
@@ -141,11 +254,11 @@ class WeatherDTO
   end
 
   def isWindDegreesAValidValue
-    getWindSpeed >= 0 && getWindSpeed <= 360 ? true : false
+    getWindDegrees >= 0 && getWindDegrees <= 360 ? true : false
   end
 
   def isCloudAllAValidValue
-    getWindSpeed >= 0 && getWindSpeed <= 100 ? true : false
+    getCloudsAll >= 0 && getCloudsAll <= 100 ? true : false
   end
 
   def isDTAValidValueForOurCentury
@@ -181,7 +294,7 @@ class WeatherDTO
   end
 
   def checkLongtitudeType
-    if getLongitude.class == Float
+    if getLongitude.class == Float || getLongitude.class == Integer
       return true
     else
       return false
@@ -197,8 +310,7 @@ class WeatherDTO
   end
 
   def checkLatitudeType
-
-    if getLatitude.class.eql? Float
+    if getLatitude.class == Float || getLatitude.class == Integer
       return true
     else
       return false
@@ -214,11 +326,11 @@ class WeatherDTO
   end
 
   def checkCityIDType
-    getId.class.eql? Integer ? true : false
+    getCityId.class == Integer ? true : false
   end
 
   def checkMainType
-    if getMain.class.eql? String
+    if getMain.class == String
       return true
     else
       return false
@@ -236,7 +348,7 @@ class WeatherDTO
   end
 
   def checkDescriptionType
-    if getDescription.class.eql? String
+    if getDescription.class == String
       return true
     else
       return false
@@ -245,7 +357,7 @@ class WeatherDTO
 
   def checkIfDescriptionValid
 
-    value = WeatherDTO.new.getDescription
+    value = getDescription
     if getMain.eql? "Thunderstorm"
       description = ["thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain", "light thunderstorm", "thunderstorm", "heavy thunderstorm", "ragged thunderstorm", "thunderstorm with light drizzle", "thunderstorm with drizzle", "thunderstorm with heavy drizzle"]
     elsif getMain.eql? "Drizzle"
@@ -289,8 +401,8 @@ class WeatherDTO
   end
 
   def checkIconType
-    value = WeatherDTO.new.getIcon
-    if value.class.eql? String
+    value = getIcon
+    if value.class == String
       return true
     else
       return false
@@ -298,64 +410,64 @@ class WeatherDTO
   end
 
   def checkIfIconValid
-    des = WeatherDTO.new.getDescription
+    des = getDescription
     des1 = ["light rain", "moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain"]
     des2 = ["light intensity shower rain", "shower rain", "heavy intensity shower rain", "ragged shower rain"]
-    if getMain.eql? "Thunderstorm"
-      if getIcon.eql? "11d"
+    if getMain == "Thunderstorm"
+      if getIcon == "11d"
         return true
       end
-    elsif getMain.eql? 'Drizzle'
-      if getIcon.eql?"09d"
+    elsif getMain == 'Drizzle'
+      if getIcon == "09d"
         return true
       end
-    elsif getMain.eql? "Rain"
-      if des.eql?"freezing rain"
-        if getIcon.eql?"13d"
+    elsif getMain == "Rain"
+      if des == "freezing rain"
+        if getIcon == "13d"
           return true
         end
       elsif des1.include?(getIcon)
-        if getIcon.eql?"10d"
+        if getIcon == "10d"
           return true
         end
       elsif des2.include?(getIcon)
-        if getIcon.eql?("09d")
+        if getIcon == "09d"
           return true
         end
       end
-    elsif getMain.eql? "Snow"
-      if getIcon.eql?("13d")
+    elsif getMain=="Snow"
+      if getIcon== "13d"
         return true
       end
-    elsif getMain.eql?("Mist") || getMain.eql?("Smoke") || getMain.eql?("Haze") || getMain.eql?("Dust") || getMain.eql?("Fog") || getMain.eql?("Sand") || getMain.eql?("Ash") || getMain.eql?("Squall") || getMain.eql?("Tornado")
-      if getIcon.eql?("50d")
+    elsif getMain == "Mist" || getMain == "Smoke" || getMain == "Haze" || getMain == "Dust" || getMain == "Fog" || getMain == "Sand" || getMain == "Ash" || getMain == "Squall" || getMain=="Tornado"
+      if getIcon=="50d"
         return true
       end
-    elsif getMain.eql?("Clear")
-      if getIcon.eql?("01d") || getIcon.eql?("01n")
+    elsif getMain == "Clear"
+      if getIcon == "01d" || getIcon=="01n"
         return true
       end
-    elsif getMain.eql?("Clouds")
-      if des.eql?("few clouds") || des.eql?("few clouds: 11-25%")
-        if getIcon.eql?("02d") || getIcon.eql?("02n")
+    elsif getMain== "Clouds"
+      if des == "few clouds" || des == "few clouds: 11-25%"
+        if getIcon == "02d" || getIcon == "02n"
           return true
         end
-      elsif des.eql?("scattered clouds") || des.eql?("scattered clouds: 25-50%")
-        if getIcon.eql?("03d") || getIcon.eql?("03n")
+      elsif des == "scattered clouds" || des == "scattered clouds: 25-50%"
+        if getIcon=="03d" || getIcon=="03n"
           return true
         end
-      elsif des.eql?("broken clouds") || des.eql?("broken clouds: 51-84%") || des.eql?("overcast clouds") || des.eql?( "overcast clouds: 85-100%")
-        if getIcon.eql?("04d") || getIcon.eql?("04n")
+      elsif des == "broken clouds" || des == "broken clouds: 51-84%" || des == "overcast clouds" || des == "overcast clouds: 85-100%"
+        if getIcon == "04d" || getIcon == "04n"
           return true
         end
       else
-        return false
       end
     end
+    return false
   end
 
   def checkTempType
-    getTemperature.class.eql?(Float) || getTemperature.class.eql?(Integer) ? true :false
+    getTemperature.class == Float || getTemperature.class == Integer ? true :false
   end
 
   def checkTempValid
@@ -363,7 +475,7 @@ class WeatherDTO
   end
 
   def checkFeelsLikeTempType
-    getFeelsLike.class.eql?(Float) || getFeelsLike.class.eql?(Integer) ? true : false
+    getFeelsLike.class == Float || getFeelsLike.class == Integer ? true : false
   end
 
   def checkFeelsLikeTempValid
@@ -371,7 +483,7 @@ class WeatherDTO
   end
 
   def checkWeatherIdType
-    getWeatherId.class.eql?(Integer) ? true : false
+    getWeatherId.class == Integer ? true : false
   end
 
   def checkWeatherIdValid
@@ -466,7 +578,7 @@ class WeatherDTO
   end
 
   def checkSystemIdType
-    getSystemId.class.eql?(Integer) ? true : false
+    getSystemId.class == Integer ? true : false
   end
 
   def isMaxTempAnIntOrFloat
