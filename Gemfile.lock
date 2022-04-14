@@ -63,7 +63,6 @@ PLATFORMS
 
 DEPENDENCIES
   cucumber
-  ffi
   minitest
   rspec
   rspec-mocks
