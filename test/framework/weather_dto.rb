@@ -83,6 +83,10 @@ class WeatherDTO
     @Hashmap["type"]
   end
 
+  def getType
+    HASHMAP["type"]
+  end
+
   def getSystemId
     @Hashmap["system_id"]
   end

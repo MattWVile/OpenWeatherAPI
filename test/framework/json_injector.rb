@@ -28,5 +28,5 @@ class JsonInjector
     end
     return hashMap
   end
-  puts JsonInjector.new.getHashMapResponse
+
 end

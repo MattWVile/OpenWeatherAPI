@@ -8,11 +8,11 @@ describe 'Weather_dto_test' do
 
   context 'Validate returned data for fields' do
 
-    it 'Check if min temperature ia a valid valuen value' do
+    it 'Check if min temperature ia a valid value value' do
       raise unless WEATHERDTO.isTempMinAValidKelvinValue
       end
 
-    it 'Check if max temperature ia a valid valuen value' do
+    it 'Check if max temperature ia a valid value value' do
       raise unless WEATHERDTO.isTempMaxAValidKelvinValue
     end
 
